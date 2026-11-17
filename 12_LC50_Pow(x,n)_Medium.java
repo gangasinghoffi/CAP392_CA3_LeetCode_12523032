@@ -1,23 +1,17 @@
 class Solution {
     public double myPow(double x, int n) {
-        long N = n;
-
-        if (N < 0) {
-            x = 1 / x;
-            N = -N;
-        }
-
-        double ans = 1.0;
+        long N = Math.abs((long) n);
+        double result = 1.0;
         double currentProduct = x;
-
+        
         while (N > 0) {
             if ((N % 2) == 1) {
-                ans *= currentProduct;
+                result *= currentProduct;
             }
             currentProduct *= currentProduct;
             N /= 2;
         }
-
-        return ans;
+        
+        return n < 0 ? 1.0 / result : result;
     }
 }
